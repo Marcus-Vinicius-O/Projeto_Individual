@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    min-height: 800px;
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.622), rgba(0, 0, 0, 0.027)),
+        url(imagens/imagem_violão.webp);
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 80px 40px;
+    margin-top: 0px;
+
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.243);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.menu {
+    display: flex;
+    gap: 40px;
+    margin-right: 100px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    transition: 0.3s;
+
+}
+
+.menu a:hover {
+    color: #7b7683;
+}
+
+.btn-login {
+    display: flex;
+    /*padding: 9px 19px;*/
+    border: 1px solid white;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.6s;
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.btn-login:hover {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    width: 170px;
+
+}
+
+.container_titulo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    background-size: cover;
+    position: relative;
+
+}
+
+.homeTitulo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "Bebas Neue", sans-serif;
+    font-style: normal;
+    font-size: 130px;
+    width: 700px;
+    height: 300px;
+    margin-left: 50px;
+    color: white;
+    line-height: normal;
+
+}
+
+.container_texto {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 700px;
+    height: 400px;
+
+}
+
+
+.homeTexto {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "Roboto", arial, sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 25px;
+    line-height: 1.9;
+    margin-right: 70px;
+    margin-left: 50px;
+    color: rgba(185, 179, 179, 0.882);
+    width: 600px;
+    height: 300px;
+
+}
+
+
+.sobre {
+    min-height: 600px;
+}
+
+.personagens {
+    min-height: 600px;
+}
