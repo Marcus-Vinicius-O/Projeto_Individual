@@ -16,26 +16,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
-<body onload="listar()">
- <header class="navbar">
-        <div class="logo"><a href="index.html">THE LAST OF US - PARTE 1</a></div>
-        <nav class="menu">
-            <a href="index.html">Início</a>
-            <a href="#">Sobre o Jogo</a>
-            <a href="#">Personagens</a>
-            <a href="#">Quiz</a>
-            
-        </nav>
-        <a href="login.html" class="btn-login">
-    Login
-</a>
-<a href="cadastro.html" class="btn-cadastro">
-    Cadastro
-</a>
-        
-    </header>
+<body>
+  <header class="navbar">
+    <div class="logo"><a href="index.html">THE LAST OF US - PARTE 1</a></div>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <a href="#">Sobre o Jogo</a>
+      <a href="#">Personagens</a>
+      <a href="#">Quiz</a>
 
-  <div class="login">
+    </nav>
+    <a href="login.html" class="btn-login">
+      Entrar
+    </a>
+
+
+  </header>
+
+  <div class="cadastro">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
@@ -43,7 +41,8 @@
     </div>
     <div class="container">
       <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
+        <div class="titulo_h2_cad">
+        <h2>Crie sua Conta!</h2></div>
         <div class="formulario">
           <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
@@ -65,7 +64,7 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+          <button class="botao" onclick="cadastrar()">Cadastrar-se</button>
         </div>
         <div id="div_aguardar" class="loading-div">
           <img src="./assets/circle-loading.gif" id="loading-gif" />
@@ -75,32 +74,26 @@
       </div>
     </div>
     <div class="footer">
-    <div class="container">
-      <div class="logo_footer">
-      <a href="https://github.com/Marcus-Vinicius-O" target="_blank">
-        <img src="logo_correto.png" class="github_icon">
-      </a>
+      <div class="container">
+        <div class="logo_footer">
+          <a href="https://github.com/Marcus-Vinicius-O" target="_blank">
+            <img src="css/imagens/logo_correto.png" class="github_icon">
+          </a>
+        </div>
+        <div class="frase">
+          <h4>Projeto acadêmico • SPTech • Marcus Vinicius © 2026</h4>
+        </div>
+
+
       </div>
-      <div class="frase">
-      <h4>Projeto acadêmico • SPTech • Marcus Vinicius © 2026</h4>
-   </div>
-   
-      
     </div>
   </div>
-  </div>
 
-  <!--footer inicio-->
-  
-  <!--footer fim-->
 </body>
 
 </html>
 
 <script>
-
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
 
   function cadastrar() {
     // aguardar();
@@ -108,74 +101,51 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
-    var cpfVar = cpf_input.value
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
-      cpfVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Para prosseguir, todos os campos devem ser preenchidos!";
 
       finalizarAguardar();
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
+      setInterval(sumirMensagem, 10000);
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
     // Validação dos campos de input
     if (emailVar.includes('@') == false) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Email inválido.)"
-        
-        finalizarAguardar();
-      return false;
-    }
-    if(cpfVar.length!=11){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(CPF inválido)"
-        
-        finalizarAguardar();
-      return false;
-    }
-    if(senhaVar.length<6){cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(A senha precisa ter no mínimo 6 caracteres)"
+        "Email inválido!"
 
-        finalizarAguardar();
+      finalizarAguardar();
       return false;
     }
-    if(confirmacaoSenhaVar!=senhaVar){
+
+    if (senhaVar.length < 6) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(A confirmação da senha precisa ser igual a senha)"
-        
-        finalizarAguardar();
+        "A senha precisa ter no mínimo 6 caracteres!"
+
+      finalizarAguardar();
+      return false;
+    }
+    if (confirmacaoSenhaVar != senhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A confirmação da senha precisa ser igual a senha!"
+
+      finalizarAguardar();
       return false;
     }
 
@@ -189,10 +159,8 @@
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
-        cpfServer: cpfVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        senhaServer: senhaVar
       }),
     })
       .then(function (resposta) {
@@ -202,7 +170,7 @@
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            "Cadastro realizado com sucesso!";
 
           setTimeout(() => {
             window.location = "login.html";
@@ -220,29 +188,10 @@
       });
 
     return false;
+
   }
-
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
 </script>
