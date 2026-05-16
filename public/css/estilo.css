@@ -13,8 +13,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- background: linear-gradient(to bottom, #000000, #111111);
   height: 100%;
+  background-color: #000000
+  ;
 }
 
 :root {
@@ -31,64 +32,6 @@ body {
   margin: auto;
 }
 
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
-
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url();
-  background-size: cover;
-}
-
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
-  font-weight: 800;
-}
-
-/* FOOTER */
-
 
 .footer {
   background-color: rgba(0, 0, 0, 0.358);
@@ -104,12 +47,7 @@ body {
   align-items: center;
   color: rgb(255, 255, 255);
   height: 80px;
-
   width: 100%;
-}
-
-.footer .container .version {
-  font-size: 12px;
 }
 
 .footer::before {
@@ -122,7 +60,6 @@ body {
 }
 
 .frase {
-  height: 50px;
   width: 600px;
   display: flex;
   align-items: center;
@@ -188,6 +125,7 @@ body {
   width: 550px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
+
 .titulo_h2_cad {
   display: flex;
   justify-content: center;
@@ -197,10 +135,6 @@ body {
   margin-bottom: 10px;
   color: #2c4e2b;
   width: 400px;
-}
-.cadastro.card h2 {
-  margin: 0;
-  font-size: 30px;
 }
 
 .formulario {
@@ -218,16 +152,6 @@ body {
 
 .formulario input {
   border: 2px solid #402d27;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-}
-
-.formulario select {
-  border: 2px solid #32b9cd;
-  background-color: rgb(255, 255, 255);
-  color: gray;
-  height: 36px;
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -311,6 +235,7 @@ body {
   margin: 0;
   font-size: 30px;
 }
+
 .login.card h1 {
   margin: 0;
   font-size: 100px;
@@ -365,7 +290,7 @@ body {
   flex-direction: column;
   justify-content: start;
   padding: 5px 0;
-} 
+}
 
 .login.botao {
   cursor: pointer;
@@ -536,6 +461,7 @@ input {
 html {
   scroll-behavior: smooth;
 }
+
 /*Inicio*/
 
 .hero {
@@ -547,6 +473,8 @@ html {
   background-position: right center;
   background-repeat: no-repeat;
   padding: 80px 40px;
+  height: 1000px;
+  display: block;
 
 }
 
@@ -562,6 +490,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 999;
 
 }
 
@@ -579,6 +508,10 @@ html {
 .logo a {
   text-decoration: none;
   color: inherit;
+}
+
+.logo :hover {
+  color: #7b7683;
 }
 
 .menu {
@@ -708,74 +641,165 @@ html {
   height: 300px;
 
 }
+
 /*Sobre o jogo*/
 
 
 .sobre {
-  min-height: 1000px;
+  min-height: auto;
   display: flex;
-  color: #fff;
+  color: #ffffff;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.623);
-  padding-left: 70px;
-  justify-content: flex-start;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.622), rgba(0, 0, 0, 0.027)),
-  url(imagens/fungo-removebg-preview.png);
+  padding-left: 60px;
+  justify-content: space-between;
+  background-image: url(imagens/imagem_esporos_final_rotated.png);
   background-repeat: no-repeat;
-  background-size: 70%;
-  background-position: right;
-  
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  height: 1000px;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
+    inset 0 0 50px rgba(0, 0, 0, 1);
+  margin-top: -20px;
+
 }
+
 .sobre .container_texto {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 350px;
-  width: 1000px;
+  justify-content: center;
+  align-items: flex-start;
+  height: 700px;
+  width: 970px;
+  border-radius: 10px;
+
 }
+
+/*
+.sobre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 80%;
+  background-image: 
+    radial-gradient(circle, rgba(169, 170, 168, 0.7) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(100, 150, 70, 0.5) 2px, transparent 2px),
+    radial-gradient(circle, rgba(148, 166, 130, 0.4) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(188, 198, 120, 0.529), transparent 70%);
+
+  background-size: 40px 40px, 60px 60px, 75px 75px, 100%;
+  background-position: 0px 0px, 15px 20px, 30px 10px, 0 0;
+  
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+
+  filter: blur(0.5px); 
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sobre::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 60%;
+  
+  background-image: 
+    radial-gradient(circle, rgba(143, 181, 105, 0.6) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(121, 150, 85, 0.4) 2.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(181, 209, 129, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at top right, rgba(150, 169, 94, 0.4), transparent 70%);
+
+  background-size: 45px 45px, 55px 55px, 80px 80px, 100% 100%;
+  background-position: 10px 5px, 25px 30px, 5px 15px, 0 0;
+  
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+
+  filter: blur(0.8px); 
+  z-index: -1;
+  pointer-events: none;
+}
+*/
 .sobre .texto_sobre {
   /*background-color: #ea1010;*/
   width: 570px;
   font-family: "roboto" Arial, Helvetica, sans-serif;
   width: 950px;
   font-size: 25px;
-  height: 1200px;
-  padding-top: 100px;
-  line-height: 1.5;
+  height: auto;
+  line-height: 1.7;
+  padding-bottom: 250px;
 }
+
 .sobre .titulo_sobre {
-  /*background-color: #32b9cd;*/
+  /* background-color: #32b9cd;*/
   font-family: "Bebas Neue", sans-serif;
-  height: 600px;
+  height: 270px;
   width: 500px;
-  /*margin-top: 100px;*/
-  font-size: 50px ;
+  font-size: 50px;
   margin-left: 20px;
   letter-spacing: 6px;
   font-style: normal;
   padding-top: 100px;
-  
+
 }
 
 .lado_texto {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.imagem_sobre img {
-    width: 700px;
-    height: auto;
-    border-radius: 10px;
-    transition: 0.5s;
-    box-shadow: 0 0 30px rgba(0,0,0,0.7);
-    filter: brightness(0.9) contrast(1.1);
+.imagem_clicker {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
-.imagem_sobre img:hover {
-    transform: scale(1.03);
+
+.imagem_clicker img {
+  max-width: 100%;
+  height: auto;
+  transform: scale(1.2);
+  filter: drop-shadow(-20px 10px 30px rgba(0, 0, 0, 0.8));
+  margin-right: 150px;
+  margin-bottom: 150px;
+  -webkit-mask-image:
+    linear-gradient(to bottom, black 70%, transparent 100%),
+    linear-gradient(to right black 85%, transparent 100%);
+  mask-image:
+    linear-gradient(to bottom, black 70%, transparent 100%),
+    linear-gradient(to right, black 85%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
+/*Personagens*/
 
 .personagens {
+  min-height: auto;
+  height: 1000px;
+  color: #fff;
+}
+.titulo_personagens {
+  height: 200px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /*background-color: #ea1010;*/
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 70px;
+  padding-top: 80px;
+  padding-left: 70px;
+}
+.quadro_joel {
+  background-color: #32b9cd;
+  height: 100px;
+  width: 100px;
+  padding-left: 300px;
 
 }
-
-  
