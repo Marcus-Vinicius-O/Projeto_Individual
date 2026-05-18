@@ -4,18 +4,12 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
+html,body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
-  background-color: #000000
-  ;
+  background-color:#131212;
 }
 
 :root {
@@ -216,7 +210,7 @@ body {
   flex: 1;
 }
 
-.card {
+.card-login {
   width: 50%;
   background-color: #fcfcfc;
   border-radius: 25px;
@@ -231,12 +225,12 @@ body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.login.card h2 {
+.card-login h2 {
   margin: 0;
   font-size: 30px;
 }
 
-.login.card h1 {
+.card-login h1 {
   margin: 0;
   font-size: 100px;
 }
@@ -652,14 +646,14 @@ html {
   align-items: center;
   padding-left: 60px;
   justify-content: space-between;
-  background-image: url(imagens/imagem_esporos_final_rotated.png);
+  background-image: url(imagens/imagem_esporos_final_rotated-Photoroom.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  height: 1000px;
+  height: 900px;
   box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
     inset 0 0 50px rgba(0, 0, 0, 1);
   margin-top: -20px;
@@ -675,57 +669,6 @@ html {
   border-radius: 10px;
 
 }
-
-/*
-.sobre::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40%;
-  height: 80%;
-  background-image: 
-    radial-gradient(circle, rgba(169, 170, 168, 0.7) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(100, 150, 70, 0.5) 2px, transparent 2px),
-    radial-gradient(circle, rgba(148, 166, 130, 0.4) 1px, transparent 1px),
-    radial-gradient(circle at top left, rgba(188, 198, 120, 0.529), transparent 70%);
-
-  background-size: 40px 40px, 60px 60px, 75px 75px, 100%;
-  background-position: 0px 0px, 15px 20px, 30px 10px, 0 0;
-  
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-
-  filter: blur(0.5px); 
-  z-index: -1;
-  pointer-events: none;
-}
-
-.sobre::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40%;
-  height: 60%;
-  
-  background-image: 
-    radial-gradient(circle, rgba(143, 181, 105, 0.6) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(121, 150, 85, 0.4) 2.5px, transparent 2.5px),
-    radial-gradient(circle, rgba(181, 209, 129, 0.3) 1px, transparent 1px),
-    radial-gradient(circle at top right, rgba(150, 169, 94, 0.4), transparent 70%);
-
-  background-size: 45px 45px, 55px 55px, 80px 80px, 100% 100%;
-  background-position: 10px 5px, 25px 30px, 5px 15px, 0 0;
-  
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-
-  filter: blur(0.8px); 
-  z-index: -1;
-  pointer-events: none;
-}
-*/
 .sobre .texto_sobre {
   /*background-color: #ea1010;*/
   width: 570px;
@@ -734,7 +677,6 @@ html {
   font-size: 25px;
   height: auto;
   line-height: 1.7;
-  padding-bottom: 250px;
 }
 
 .sobre .titulo_sobre {
@@ -746,7 +688,7 @@ html {
   margin-left: 20px;
   letter-spacing: 6px;
   font-style: normal;
-  padding-top: 100px;
+  padding-top: 110px;
 
 }
 
@@ -781,25 +723,178 @@ html {
 
 .personagens {
   min-height: auto;
-  height: 1000px;
-  color: #fff;
+  height: 1900px;
+  color: #ffffff;
+  padding-top: 100px;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
+    inset 0 0 50px rgba(0, 0, 0, 1);
 }
 .titulo_personagens {
-  height: 200px;
-  width: 500px;
+  height: 100px;
+  width: 1000px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   /*background-color: #ea1010;*/
   font-family: 'Bebas Neue', sans-serif;
   font-size: 70px;
-  padding-top: 80px;
   padding-left: 70px;
+  letter-spacing: 1.5px;
+  
 }
-.quadro_joel {
-  background-color: #32b9cd;
-  height: 100px;
-  width: 100px;
-  padding-left: 300px;
+.conteudo-personagens{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    /*background-color: #09ec11;*/
+    height: 800px;
+    width: 100%;
+    padding-top: 80px;
+    padding-left: 50px;
+}
 
+.card-personagens{
+    width: 400px;
+    height: 500 px;
+    background-color: #dedede;
+    border-radius: 18px;
+    transition: 0.4s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    overflow-x: hidden;
+}
+
+.card-personagens:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.1);
+}
+
+.card-personagens img{
+    width: 100%;
+    height: 250px;
+    object-fit:cover;
+    margin-bottom: 10px;
+    /*border-radius: 10px;*/
+  }
+
+.conteudo{
+    padding: 25px;
+    font-family: "roboto" Arial, Helvetica, sans-serif;
+}
+
+.conteudo h2{
+    color: rgb(0, 0, 0);
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.conteudo p{
+    color: #000000;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.conteudo button{
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #6b8e23;
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.conteudo button:hover{
+    background-color: #89b52c;
+}
+.infectados {
+  height: 100%;
+  display: block;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
+    inset 0 0 150px rgba(0, 0, 0, 1);
+}
+.titulo_infectados {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: #ffffff;
+  height: 200px;
+  width: 850px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 50px;
+  letter-spacing: 1.7px;
+  /*background-color: #89b52c;*/
+  padding-left: 60px;
+}
+
+.infectados-container{
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    /*background-color: #32b9cd;*/
+    height: 650px;
+    width: 1800x;
+    padding-left: 65px;
+}
+
+.infectados-card{
+    width: 400px;
+    height: 560px;
+    background-color: #000000;
+    border: 1px solid rgba(226, 222, 104, 0.2);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+    0 0 20px rgba(70, 65, 39, 0.08);
+}
+
+.infectados-card:hover{
+    transform: translateY(-10px);
+    border-color: rgba(255, 217, 80, 0.5);
+    box-shadow:
+    0 0 30px rgba(255, 225, 0, 0.2);
+}
+
+
+.infectados-card img{
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    filter:
+    saturate(0.8)
+    contrast(1.1);
+}
+
+.infectados-conteudo{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-family: "roboto" Arial, Helvetica, sans-serif;
+}
+
+.infectados-conteudo h2{
+    color: #bdb569;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.infectados-conteudo p{
+    color: #c7c7c7;
+    line-height: 1.7;
+    font-size: 15px;
 }
