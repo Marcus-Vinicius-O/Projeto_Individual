@@ -13,21 +13,20 @@
 
 <body>
     <header class="navbar">
-        <div class="logo"> <a href="index.html">THE LAST OF US - PARTE 1</a></div>
+        <div class="logo"> <a href="index.html">THE LAST OF FÃS- PARTE 1</a></div>
         <nav class="menu">
             <a href="#inicio">início</a>
             <a href="#sobre">Sobre o Jogo</a>
             <a href="#personagens">Personagens</a>
             <a href="#infectados">Infectados</a>
-            <a href="#">Quiz</a>
+            <a href="quiz/quiz.html">Quiz</a>
 
 
         </nav>
-        </nav>
-        <a href="login.html" class="btn-login">
-            Entrar
-        </a>
-
+      <div id="navBotoes">
+    <a href="login.html" class="btn-login" id="btnEntrar">Entrar</a>
+    <a href="#" class="btn-login" id="btnSair" onclick="sair()" style="display:none;">Sair</a>
+</div>
     </header>
 
     </div>
@@ -179,45 +178,6 @@
                     </p>
                 </div>
             </div>
-            <div class="card-personagens">
-                <img src="css/imagens/Part_I_Henry_infobox.webp" alt="henry">
-
-                <div class="conteudo">
-                    <h2>henry</h2>
-                    <p>
-                        Durante sua jornada pelas cidades destruídas, Henry faz
-                        o possível para proteger seu irmão Sam enquanto enfrenta decisões
-                        difíceis para continuarem vivos.
-                    </p>
-                </div>
-            </div>
-            <div class="card-personagens">
-                <h1></h1>
-                <img src="css/imagens/Part_I_Sam_infobox.webp" alt="Sam">
-
-                <div class="conteudo">
-                    <h2>Sam</h2>
-
-                    <p>
-                        Ainda muito jovem, Sam acompanha o irmão Henry em busca
-                        de segurança enquanto tenta compreender os perigos
-                        constantes do novo mundo.
-                    </p>
-                </div>
-            </div>
-            <div class="card-personagens">
-                <img src="css/imagens/Part_I_David_infobox.webp" alt="David">
-
-                <div class="conteudo">
-                    <h2>david</h2>
-
-                    <p>
-                        Liderando um pequeno grupo de sobreviventes, David demonstra
-                        comportamento calmo e amigável, mas esconde intenções
-                        extremamente perigosas por trás de suas ações.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
     <section id="infectados" class="infectados">
@@ -285,6 +245,32 @@
 
         </div>
     </section>
+        <div class="footer">
+      <div class="container">
+        <div class="logo_footer">
+          <a href="https://github.com/Marcus-Vinicius-O" target="_blank">
+            <img src="css/imagens/logo_correto.png" class="github_icon">
+          </a>
+        </div>
+        <div class="frase">
+          <h4>Projeto acadêmico • SPTech • Marcus Vinicius © 2026</h4>
+        </div>
+
+
+      </div>
+    </div>
 </body>
+<script>
+       const idUsuario = sessionStorage.ID_USUARIO;
+    if (idUsuario) {
+        document.getElementById('btnEntrar').style.display = 'none';
+        document.getElementById('btnSair').style.display = 'flex';
+    }
+
+    function sair() {
+        sessionStorage.clear();
+        window.location.href = 'login.html';
+    }
+</script>
 
 </html>

@@ -22,10 +22,10 @@
         <div class="logo"><a href="index.html">THE LAST OF US - PARTE 1</a></div>
         <nav class="menu">
             <a href="index.html">Início</a>
-            <a href="index.html">Sobre o Jogo</a>
-            <a href="#">Personagens</a>
-            <a href="">Infectados</a>
-            <a href="#">Quiz</a>
+            <a href="index.html#sobre">Sobre o Jogo</a>
+            <a href="index.html#personagens">Personagens</a>
+            <a href="index.html#infectados">Infectados</a>
+            <a href="quiz/quiz.html">Quiz</a>
 
         </nav>
         <a href="login.html" class="btn-login">
@@ -54,12 +54,12 @@
                         <input id="senha_input" type="password" placeholder="******">
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
-                    <div class="mudar_cadastro"> Ainda não tem cadastro?<a href="cadastro.html">Cadastre-se</a></div>
+                    <div class="mudar_cadastro"> Ainda não tem cadastro?/<a href="cadastro.html">Cadastre-se</a></div>
                 </div>
 
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="assets/loading symbol GIF.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -84,75 +84,51 @@
 
 </html>
 
+</html>
 <script>
-
-
     function entrar() {
         aguardar();
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
-
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
+            cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Para prosseguir, todos os campos devem ser preenchidos!";
             finalizarAguardar();
             return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
         fetch("/usuarios/autenticar", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 emailServer: emailVar,
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
+            console.log("json recebido" .json);
             if (resposta.ok) {
-                console.log(resposta);
-
                 resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+                    console.log("json recebido" .json);
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
+                        window.location = "./quiz/quiz.html";
+                    }, 1000);
                 });
-
             } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
                 });
             }
-
         }).catch(function (erro) {
             console.log(erro);
-        })
-
+        });
         return false;
     }
-
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        cardErro.style.display = "none";
     }
-
 </script>

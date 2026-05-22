@@ -2,6 +2,9 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
 }
 
 html,body {
@@ -10,6 +13,8 @@ html,body {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
   background-color:#131212;
+  scroll-behavior: smooth;
+
 }
 
 :root {
@@ -17,7 +22,7 @@ html,body {
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-footer: 20px
+  --tamanho-footer: 20px;
 }
 
 .container {
@@ -37,7 +42,7 @@ html,body {
 
 .footer .container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   color: rgb(255, 255, 255);
   height: 80px;
@@ -47,11 +52,12 @@ html,body {
 .footer::before {
   content: "";
   display: block;
-  width: 1840px;
   height: 2px;
-  background-color: #273a23;
+  background-color: #ffffff;
   margin: 0 auto 10px auto;
 }
+
+
 
 .frase {
   width: 600px;
@@ -88,9 +94,7 @@ html,body {
 .cadastro {
   min-height: 99.7%;
   height: var(--tamanho-login);
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.622), rgba(0, 0, 0, 0.027)),
-    url(imagens/imagem_joel_paisagem.webp);
+  background-image:url(imagens/joel-mascara-part-1-kq.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -107,12 +111,12 @@ html,body {
 
 .cadastro .card {
   width: 50%;
-  background-color: #fcfcfc;
+  background-color: #000000ca;
   border-radius: 25px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: #2c4e2b;
+  color: #ffffff;
   flex-direction: column;
   height: 570px;
   padding: 20px 0;
@@ -127,7 +131,7 @@ html,body {
   text-align: center;
   font-size: 25px;
   margin-bottom: 10px;
-  color: #2c4e2b;
+  color: #ffffff;
   width: 400px;
 }
 
@@ -145,10 +149,12 @@ html,body {
 }
 
 .formulario input {
-  border: 2px solid #402d27;
+  border: 2px solid #ffffff;
   text-align: center;
   border-radius: 10px;
   margin: 0;
+  background-color:#00000000;
+  color: #ffffff;
 }
 
 .campo {
@@ -165,8 +171,8 @@ html,body {
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
-  background-color: #2c4e2b;
+  color: #000000;
+  background-color: #a3a562;
   width: 440px;
   height: 40px;
   align-self: center;
@@ -193,9 +199,7 @@ html,body {
 .login {
   min-height: 99.7%;
   height: var(--tamanho-login);
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.622), rgba(0, 0, 0, 0.027)),
-    url(imagens/imagem_joel_paisagem.webp);
+  background-image:url(imagens/joel-mascara-part-1-kq.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -212,12 +216,12 @@ html,body {
 
 .card-login {
   width: 50%;
-  background-color: #fcfcfc;
+  background-color: #000000c3;
   border-radius: 25px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: rgb(45, 72, 40);
+  color: rgb(255, 255, 255);
   flex-direction: column;
   height: 400px;
   padding: 20px 0;
@@ -277,7 +281,7 @@ html,body {
   text-align: center;
   border-radius: 10px;
   margin: 0;
-}
+}ry faz o possível para proteger seu irmão Sam enquanto
 
 .login.campo {
   display: flex;
@@ -286,20 +290,6 @@ html,body {
   padding: 5px 0;
 }
 
-.login.botao {
-  cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
-  background-color: #2c4e2b;
-  width: 440px;
-  height: 40px;
-  align-self: center;
-  margin-top: 10px;
-}
 
 .loading-div {
   width: 50px;
@@ -385,45 +375,6 @@ input {
   width: 50px;
 }
 
-/* ALERTA */
-
-#alerta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.mensagem-alarme {
-  background-color: white;
-  border-radius: 5px;
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.mensagem-alarme h3 {
-  font-size: 14px;
-  margin: 0;
-}
-
-.mensagem-alarme .informacao {
-  width: 66%;
-}
-
-.alarme-sino {
-  width: 48px;
-  height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
-  animation-iteration-count: infinite;
-}
-
 @keyframes bell {
   0% {
     transform: rotate(25deg)
@@ -446,15 +397,8 @@ input {
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 /*Inicio*/
 
@@ -469,13 +413,15 @@ html {
   padding: 80px 40px;
   height: 1000px;
   display: block;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.872),
+    inset 0 0 50px rgba(0, 0, 0, 1);
 
 }
 
 .navbar {
   width: 100%;
   height: 80px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.281);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -486,6 +432,10 @@ html {
   width: 100%;
   z-index: 999;
 
+}
+#navBotoes {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -656,7 +606,6 @@ html {
   height: 900px;
   box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
     inset 0 0 50px rgba(0, 0, 0, 1);
-  margin-top: -20px;
 
 }
 
@@ -723,7 +672,7 @@ html {
 
 .personagens {
   min-height: auto;
-  height: 1900px;
+  height: 1300px;
   color: #ffffff;
   padding-top: 100px;
   box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
@@ -749,7 +698,7 @@ html {
     gap: 40px;
     flex-wrap: wrap;
     /*background-color: #09ec11;*/
-    height: 800px;
+    height: auto;
     width: 100%;
     padding-top: 80px;
     padding-left: 50px;
@@ -795,26 +744,7 @@ html {
     line-height: 1.6;
     margin-bottom: 20px;
 }
-
-.conteudo button{
-    width: 100%;
-    padding: 12px;
-
-    border: none;
-    border-radius: 10px;
-
-    background-color: #6b8e23;
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.conteudo button:hover{
-    background-color: #89b52c;
-}
+/*Infectados*/
 .infectados {
   height: 100%;
   display: block;

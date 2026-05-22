@@ -1,0 +1,313 @@
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #131212;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #a3a562; }
+        .btn-sair {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ccc;
+            padding: 6px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+        .btn-sair:hover {
+            border-color: #a3a562;
+            color: #a3a562;
+        }
+        .quiz-container {
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .progresso-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .barra-progresso {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-bottom: 40px;
+        }
+        .barra-preenchida {
+            height: 4px;
+            background: #a3a562;
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        .pergunta-numero {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            color: #a3a562;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .pergunta-texto {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            line-height: 1.1;
+            margin-bottom: 36px;
+            color: #fff;
+        }
+        .alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+        .alternativa-label {
+            display: block;
+            padding: 16px 20px;
+            border: 1px solid rgba(163, 165, 98, 0.25);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #ccc;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .alternativa-label:hover {
+            border-color: #a3a562;
+            color: #fff;
+            background: rgba(163, 165, 98, 0.06);
+        }
+        .alternativa-label.selecionada {
+            border-color: #a3a562;
+            color: #fff;
+            background: rgba(163, 165, 98, 0.12);
+        }
+        input[type="radio"] { display: none; }
+        .btn-avancar {
+            width: 100%;
+            padding: 16px;
+            background: #a3a562;
+            border: none;
+            border-radius: 6px;
+            color: #131212;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-avancar:hover { background: #b8ba70; }
+        .btn-avancar:disabled {
+            background: rgba(255,255,255,0.1);
+            color: #555;
+            cursor: not-allowed;
+        }
+        .resultado-container {
+            text-align: center;
+            display: none;
+        }
+        .resultado-titulo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: #a3a562;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .resultado-nome {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .resultado-img {
+            width: 250px;
+            height: 310px;
+            object-fit: cover;
+            border: 2px solid rgba(163, 165, 98, 0.4);
+            border-radius: 6px;
+            margin-bottom: 24px;
+        }
+        .resultado-descricao {
+            font-size: 1rem;
+            color: #aaa;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+        .btn-dashboard {
+            display: inline-block;
+            padding: 14px 32px;
+            border: 1px solid #a3a562;
+            color: #a3a562;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .btn-dashboard:hover {
+            background: #a3a562;
+            color: #131212;
+        }
+        .loading {
+            text-align: center;
+            padding: 80px 0;
+            color: #555;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+        /* TELA DE APRESENTAÇÃO */
+#apresentacao {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.quiz-intro-label {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: #a3a562;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.apresentacao-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.apresentacao-descricao {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 32px;
+}
+
+.apresentacao-personagens {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.apresentacao-personagens span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: #555;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+
+.apresentacao-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-jogar {
+    padding: 16px 48px;
+    background: #a3a562;
+    border: none;
+    border-radius: 6px;
+    color: #131212;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-jogar:hover { background: #b8ba70; }
+
+.btn-ver-graficos {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 32px;
+    border: 1px solid #a3a562;
+    color: #a3a562;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn-ver-graficos:hover {
+    background: #a3a562;
+    color: #131212;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background: #1a1a18;
+    border: 1px solid rgba(163,165,98,0.3);
+    border-radius: 12px;
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+}
+
+.modal-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: #a3a562;
+    margin-bottom: 16px;
+}
+
+.modal-texto {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
