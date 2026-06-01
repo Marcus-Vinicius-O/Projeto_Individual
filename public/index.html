@@ -13,7 +13,7 @@
 
 <body>
     <header class="navbar">
-        <div class="logo"> <a href="index.html">THE LAST OF FÃS- PARTE 1</a></div>
+        <div class="logo"> <a href="index.html">THE LAST OF FÃS - PARTE 1</a></div>
         <nav class="menu">
             <a href="#inicio">início</a>
             <a href="#sobre">Sobre o Jogo</a>
@@ -23,10 +23,10 @@
 
 
         </nav>
-      <div id="navBotoes">
-    <a href="login.html" class="btn-login" id="btnEntrar">Entrar</a>
-    <a href="#" class="btn-login" id="btnSair" onclick="sair()" style="display:none;">Sair</a>
-</div>
+        <div id="navBotoes">
+            <a href="login.html" class="btn-login" id="btnEntrar">Entrar</a>
+            <a href="#" class="btn-login" id="btnSair" onclick="sair()" style="display:none;">Sair</a>
+        </div>
     </header>
 
     </div>
@@ -74,6 +74,45 @@
         </div>
         <div class="imagem_clicker">
             <img src="css/imagens/fungo-removebg-preview-removebg-preview_upscaled.png" alt="Clicker The Last of Us">
+        </div>
+    </section>
+
+    <section id="vagalumes" class="vagalumes">
+        <div class="esquerdo_vagalumes">
+            <div class="titulo_vagalumes">
+                <h3>Vagalumes</h3>
+            </div>
+            <div class="texto_vagalumes">
+                Os Vagalumes são uma organização revolucionária formada por sobreviventes que se opõem ao controle
+                exercido pela FEDRA. Guiados pela esperança de reconstruir a sociedade, eles acreditam que a liberdade e
+                a cooperação são essenciais para o futuro da humanidade.
+
+                Liderados por Marlene, os Vagalumes operam em segredo, estabelecendo bases escondidas e realizando
+                missões em diferentes regiões do país. Além de enfrentar a autoridade militar das zonas de quarentena, o
+                grupo dedica grande parte de seus esforços à busca por uma cura para a infecção.
+
+                Mesmo recorrendo a ações arriscadas e, por vezes, controversas, os Vagalumes são vistos por muitos como
+                um símbolo de esperança em um mundo marcado pelo medo, pela violência e pela luta constante pela
+                sobrevivência.
+            </div>
+        </div>
+        <div class="versus">X</div>
+        <div class="direita_fedra">
+            <div class="titulo_fedra">
+                <h3>Fedra</h3>
+            </div>
+            <div class="texto_fedra">
+                A FEDRA (Federal Disaster Response Agency) é a organização militar responsável por administrar as Zonas
+                de Quarentena após o colapso da sociedade causado pela infecção. Com soldados armados e regras rígidas,
+                seu principal objetivo é manter a ordem e proteger os sobreviventes das ameaças externas.
+
+                Para garantir a estabilidade das áreas sob seu controle, a FEDRA monitora a população, controla recursos
+                e combate grupos considerados perigosos. Embora seja responsável pela segurança de muitas comunidades,
+                seus métodos autoritários geram insatisfação entre os sobreviventes.
+
+                Ao longo da história, a organização entra em conflito com os Vagalumes, grupo revolucionário que se opõe
+                ao seu governo e defende uma nova forma de reconstruir a sociedade.
+            </div>
         </div>
     </section>
 
@@ -139,7 +178,7 @@
                     </p>
                 </div>
             </div>
-             <div class="card-personagens">
+            <div class="card-personagens">
                 <img src="css/imagens/Part_I_Tommy_infobox.webp" alt="Tommy">
 
                 <div class="conteudo">
@@ -245,23 +284,23 @@
 
         </div>
     </section>
-        <div class="footer">
-      <div class="container">
-        <div class="logo_footer">
-          <a href="https://github.com/Marcus-Vinicius-O" target="_blank">
-            <img src="css/imagens/logo_correto.png" class="github_icon">
-          </a>
-        </div>
-        <div class="frase">
-          <h4>Projeto acadêmico • SPTech • Marcus Vinicius © 2026</h4>
-        </div>
+    <div class="footer">
+        <div class="container">
+            <div class="logo_footer">
+                <a href="https://github.com/Marcus-Vinicius-O" target="_blank">
+                    <img src="css/imagens/logo_correto.png" class="github_icon">
+                </a>
+            </div>
+            <div class="frase">
+                <h4>Projeto acadêmico • SPTech • Marcus Vinicius © 2026</h4>
+            </div>
 
 
-      </div>
+        </div>
     </div>
 </body>
 <script>
-       const idUsuario = sessionStorage.ID_USUARIO;
+    const idUsuario = sessionStorage.ID_USUARIO;
     if (idUsuario) {
         document.getElementById('btnEntrar').style.display = 'none';
         document.getElementById('btnSair').style.display = 'flex';

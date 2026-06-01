@@ -43,16 +43,19 @@ nav {
     border: 1px solid rgba(255,255,255,0.2);
     color: #ccc;
     padding: 6px 18px;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 0.85rem;
     letter-spacing: 1px;
-    transition: all 0.2s;
+    transition: 0.6s;
+    width: 80px;
 }
 
 .btn-sair:hover {
-    border-color: #a3a562;
-    color: #a3a562;
+    border-color: #000000;
+    color: #000000;
+    background-color: #ffffff;
+    width: 110px;
 }
 
 /* CONTAINER PRINCIPAL */

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - The Last of Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./../css/dashboards.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-    <!-- NAVBAR igual ao quiz -->
     <nav>
-        <a class="nav-logo" href="../index.html">THE LAST OF US — PARTE 1</a>
+        <a class="nav-logo" href="../index.html">THE LAST OF FÃS — PARTE 1</a>
         <div class="nav-links">
             <a href="../quiz/quiz.html">QUIZ</a>
         </div>
@@ -22,17 +24,14 @@
 
     <div class="dash-container">
 
-        <!-- TÍTULO DA PÁGINA -->
         <div class="dash-titulo">
             <p class="dash-intro-label">ESTATÍSTICAS GERAIS</p>
             <h1 class="dash-h1">QUAL PERSONAGEM OS JOGADORES SÃO?</h1>
             <p class="dash-subtitulo">Veja como você se compara com os outros jogadores.</p>
         </div>
 
-        <!-- CARDS DE INDICADORES -->
         <div class="cards-grid">
 
-            <!-- Card 1: Seu personagem -->
             <div class="dash-card" id="cardMeuPersonagem">
                 <p class="card-label">SEU PERSONAGEM</p>
                 <img class="card-img" id="meuPersonagemImg" src="" alt="">
@@ -40,7 +39,6 @@
                 <p class="card-desc" id="meuPersonagemDesc">---</p>
             </div>
 
-            <!-- Card 2: Personagem mais popular -->
             <div class="dash-card">
                 <p class="card-label">MAIS POPULAR</p>
                 <img class="card-img" id="popularImg" src="" alt="">
@@ -48,23 +46,19 @@
                 <p class="card-desc" id="popularTotal">---</p>
             </div>
 
-            <!-- Card 3: Você faz parte da maioria? -->
             <div class="dash-card">
                 <p class="card-label">VOCÊ É DA MAIORIA?</p>
                 <h2 class="card-nome" id="maioriaNome">---</h2>
                 <p class="card-desc" id="maioriaMsg">---</p>
             </div>
 
-            <!-- Card 4: Total de participantes -->
             <div class="dash-card">
                 <p class="card-label">TOTAL DE PARTICIPANTES</p>
                 <h2 class="card-numero" id="totalParticipantes">---</h2>
                 <p class="card-desc">jogadores já fizeram o quiz</p>
             </div>
-
         </div>
 
-        <!-- GRÁFICOS -->
         <div class="graficos-grid">
 
             <div class="grafico-box">
@@ -82,9 +76,9 @@
     </div>
 
 </body>
+
 </html>
 <script>
-    const BASE_URL = 'http://localhost:3333';
     const idUsuario = sessionStorage.ID_USUARIO;
 
     if (!idUsuario) {
@@ -92,18 +86,19 @@
         window.location.href = '../login.html';
     }
 
-    // Busca as duas rotas ao mesmo tempo
     Promise.all([
-        fetch(`${BASE_URL}/dashboard/estatisticas`).then(r => r.json()),
-        fetch(`${BASE_URL}/dashboard/meu-resultado/${idUsuario}`).then(r => r.json())
-    ]).then(function([estatisticas, meuResultado]) {
+        fetch(`/dashboard/estatisticas`).then(function (r) { return r.json(); }),
+        fetch(`/dashboard/meu-resultado/${idUsuario}`).then(function (r) { return r.json(); })
+    ]).then(function (resultados) {
+        var estatisticas = resultados[0];
+        var meuResultado = resultados[1];
         preencherMeuPersonagem(meuResultado);
         preencherMaisPopular(estatisticas);
         preencherMaioria(estatisticas, meuResultado);
         preencherTotal(estatisticas);
         plotarGraficoPizza(estatisticas);
         plotarGraficoBarra(estatisticas);
-    }).catch(function(erro) {
+    }).catch(function (erro) {
         console.log(erro);
     });
 
@@ -114,7 +109,7 @@
     }
 
     function preencherMaisPopular(estatisticas) {
-        const popular = estatisticas[0]; // já vem ordenado por total DESC
+        const popular = estatisticas[0];
         document.getElementById('popularImg').src = `/${popular.url_imagem}`;
         document.getElementById('popularNome').textContent = popular.personagem;
         document.getElementById('popularTotal').textContent = `${popular.total} jogador(es) tiraram este personagem`;
@@ -131,13 +126,20 @@
     }
 
     function preencherTotal(estatisticas) {
-        const total = estatisticas.reduce((acc, item) => acc + Number(item.total), 0);
+        var total = 0;
+        for (let i = 0; i < estatisticas.length; i++) {
+            total = total + Number(estatisticas[i].total);
+        }
         document.getElementById('totalParticipantes').textContent = total;
     }
 
     function plotarGraficoPizza(estatisticas) {
-        const nomes = estatisticas.map(e => e.personagem);
-        const totais = estatisticas.map(e => Number(e.total));
+        const nomes = [];
+        const totais = [];
+        for (let i = 0; i < estatisticas.length; i++) {
+            nomes.push(estatisticas[i].personagem);
+            totais.push(Number(estatisticas[i].total));
+        }
 
         const ctx = document.getElementById('graficoPizza').getContext('2d');
         new Chart(ctx, {
@@ -168,9 +170,12 @@
     }
 
     function plotarGraficoBarra(estatisticas) {
-        const nomes = estatisticas.map(e => e.personagem);
-        const totais = estatisticas.map(e => Number(e.total));
-
+        const nomes = [];
+        const totais = [];
+        for (let i = 0; i < estatisticas.length; i++) {
+            nomes.push(estatisticas[i].personagem);
+            totais.push(Number(estatisticas[i].total));
+        }
         const ctx = document.getElementById('graficoBarra').getContext('2d');
         new Chart(ctx, {
             type: 'bar',

@@ -25,70 +25,7 @@ html,body {
   --tamanho-footer: 20px;
 }
 
-.container {
-  display: flex;
-  width: 80%;
-  margin: auto;
-}
 
-
-.footer {
-  background-color: rgba(0, 0, 0, 0.358);
-  color: rgb(255, 255, 255);
-  text-align: center;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
-
-.footer .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(255, 255, 255);
-  height: 80px;
-  width: 100%;
-}
-
-.footer::before {
-  content: "";
-  display: block;
-  height: 2px;
-  background-color: #ffffff;
-  margin: 0 auto 10px auto;
-}
-
-
-
-.frase {
-  width: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-right: 450px;
-  margin-left: 50px;
-}
-
-.logo_footer {
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-right: 450px;
-}
-
-.github_icon {
-  width: 55px;
-  transition: 0.3s;
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.github_icon:hover {
-  transform: scale(1.15);
-  opacity: 0.8;
-}
 
 /*CADASTRO*/
 .cadastro {
@@ -281,7 +218,7 @@ html,body {
   text-align: center;
   border-radius: 10px;
   margin: 0;
-}ry faz o possível para proteger seu irmão Sam enquanto
+}
 
 .login.campo {
   display: flex;
@@ -588,7 +525,6 @@ input {
 
 /*Sobre o jogo*/
 
-
 .sobre {
   min-height: auto;
   display: flex;
@@ -668,6 +604,82 @@ input {
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
+
+/*Vagalumes*/
+
+.vagalumes {
+  display: flex;
+  min-height: auto;
+  height: 900px;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9),
+  inset 0 0 50px rgba(0, 0, 0, 1);
+}
+.esquerdo_vagalumes {
+  display: block;
+  /*background-color: #284027;*/
+  justify-content: center;
+  margin-left: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titulo_vagalumes {
+  /*background-color: #cd6d32;*/
+  font-size: 80px;
+  padding-left: 80px;
+  color: rgb(248, 247, 247);
+  margin-top: 80px;
+}
+.texto_vagalumes {
+  /*background-color:#32b9cd;*/
+  width: 700px;
+  height: 500px;
+  margin-top: 80px;
+  margin-left: 60px;
+  font-family: "Roboto" Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+.versus{
+  display: flex;
+  justify-content: center;
+  font-size: 100px;
+  color: white;
+  /*background-color: #4ccd32;*/
+  justify-content: center;
+  padding-top: 90px;
+  width: 300px;
+}
+.direita_fedra {
+/*background-color: orange;*/
+width: 900px;
+
+}
+.titulo_fedra {
+  display: flex;
+  color: #ffffff;
+  /*background-color: red;*/
+  font-size: 80px;
+  margin-top: 80px;
+  justify-content: center;
+}
+.texto_fedra {
+  margin-top: 80px;
+  /*background-color: purple;*/
+  width: 700px;
+  height: 500px;
+  margin-left: 60px;
+  font-family: "Roboto" Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  margin-right: 60px;
+}
+
+
 /*Personagens*/
 
 .personagens {
@@ -744,6 +756,7 @@ input {
     line-height: 1.6;
     margin-bottom: 20px;
 }
+
 /*Infectados*/
 .infectados {
   height: 100%;
@@ -797,7 +810,6 @@ input {
     0 0 30px rgba(255, 225, 0, 0.2);
 }
 
-
 .infectados-card img{
     width: 100%;
     height: 360px;
@@ -827,4 +839,68 @@ input {
     color: #c7c7c7;
     line-height: 1.7;
     font-size: 15px;
+}
+
+/*footer*/
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.358);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.footer .container {  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  height: 80px;
+  width: 100%;
+}
+
+.footer::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 0 auto 10px auto;
+}
+
+.frase {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 450px;
+  margin-left: 50px;
+}
+
+.logo_footer {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 450px;
+}
+
+.github_icon {
+  width: 55px;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.github_icon:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
 }

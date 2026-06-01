@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - The Last of Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./../css/quiz.css">
 </head>
+
 <body>
     <nav>
-        <a class="nav-logo" href="../index.html">THE LAST OF US — PARTE 1</a>
+        <a class="nav-logo" href="../index.html">THE LAST OF FÃS — PARTE 1</a>
         <div class="nav-links">
             <a href="../dashboard/dashboard.html">DASHBOARD</a>
         </div>
         <button class="btn-sair" onclick="sair()">SAIR</button>
     </nav>
     <div id="modalLogin" style="display:none;">
-    <div class="modal-overlay">
-        <div class="modal-box">
-            <p class="modal-titulo">ACESSO RESTRITO</p>
-            <p class="modal-texto">Você precisa estar logado para fazer o quiz.</p>
-            <a href="../login.html" class="btn-jogar">FAZER LOGIN</a>
+        <div class="modal-overlay">
+            <div class="modal-box">
+                <p class="modal-titulo">ACESSO RESTRITO</p>
+                <p class="modal-texto">Você precisa estar logado para fazer o quiz.</p>
+                <a href="../login.html" class="btn-jogar">FAZER LOGIN</a>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="quiz-container">
 
@@ -33,7 +36,7 @@
             <p class="quiz-intro-label">DESCUBRA QUEM VOCÊ É</p>
             <h1 class="apresentacao-titulo">QUAL PERSONAGEM DE<br>THE LAST OF US VOCÊ SERIA?</h1>
             <p class="apresentacao-descricao">
-                Responda 15 perguntas e descubra se você tem o espírito de sobrevivência do Joel, 
+                Responda 15 perguntas e descubra se você tem o espírito de sobrevivência do Joel,
                 a coragem da Ellie, a frieza da Tess, o idealismo do Tommy ou o isolamento do Bill.
             </p>
             <div class="apresentacao-personagens">
@@ -49,10 +52,8 @@
             </div>
         </div>
 
-        <!-- LOADING -->
         <div class="loading" id="loading" style="display:none;">CARREGANDO...</div>
 
-        <!-- QUIZ -->
         <div id="quiz" style="display:none;">
             <div class="progresso-label">
                 <span id="labelPergunta">PERGUNTA 1 DE 15</span>
@@ -65,11 +66,9 @@
             <h2 class="pergunta-texto" id="perguntaTexto"></h2>
             <div class="alternativas" id="alternativas"></div>
             <button class="btn-avancar" id="btnAvancar" onclick="avancar()" disabled>
-                PRÓXIMA PERGUNTA
             </button>
         </div>
 
-        <!-- RESULTADO -->
         <div class="resultado-container" id="resultado" style="display:none;">
             <p class="resultado-titulo">VOCÊ É</p>
             <h2 class="resultado-nome" id="resultadoNome"></h2>
@@ -80,25 +79,24 @@
 
     </div>
 </body>
+
 </html>
 <script>
-    const BASE_URL = 'http://localhost:3333';
     let perguntas = [];
     let indexAtual = 0;
     let respostas = [];
     let alternativaSelecionada = null;
     const idUsuario = sessionStorage.ID_USUARIO;
     const nomeUsuario = sessionStorage.NOME_USUARIO;
-if (!idUsuario) {
-    document.getElementById('modalLogin').style.display = 'block';
-}
-    // Carrega as perguntas em segundo plano enquanto o usuário lê a apresentação
-    fetch(`${BASE_URL}/quiz/perguntas`)
-        .then(res => res.json())
-        .then(dados => {
+    if (!idUsuario) {
+        document.getElementById('modalLogin').style.display = 'block';
+    }
+    fetch(`/quiz/perguntas`)
+        .then(function (res) { return res.json(); })
+        .then(function (dados) {
             perguntas = agruparPerguntas(dados);
         })
-        .catch(() => {
+        .catch(function () {
             document.getElementById('loading').textContent = 'ERRO AO CARREGAR. TENTE NOVAMENTE.';
         });
 
@@ -114,8 +112,9 @@ if (!idUsuario) {
     }
 
     function agruparPerguntas(dados) {
-        const mapa = {};
-        dados.forEach(linha => {
+        let mapa = {}
+        for (let i = 0; i < dados.length; i++) {
+            var linha = dados[i];
             if (!mapa[linha.pergunta_id]) {
                 mapa[linha.pergunta_id] = {
                     pergunta_id: linha.pergunta_id,
@@ -128,7 +127,7 @@ if (!idUsuario) {
                 texto_alternativa: linha.texto_alternativa,
                 fk_personagem: linha.fk_personagem
             });
-        });
+        }
         return Object.values(mapa);
     }
 
@@ -146,24 +145,27 @@ if (!idUsuario) {
         alternativaSelecionada = null;
         document.getElementById('btnAvancar').disabled = true;
         const alternativasEmbaralhadas = [...pergunta.alternativas].sort(() => Math.random() - 0.5);
-        alternativasEmbaralhadas.forEach(alt => {
+        for (let i = 0; i < alternativasEmbaralhadas.length; i++) {
+            const alt = alternativasEmbaralhadas[i];
             const label = document.createElement('label');
             label.className = 'alternativa-label';
             label.textContent = alt.texto_alternativa;
             label.dataset.alternativaId = alt.alternativa_id;
             label.dataset.fkPersonagem = alt.fk_personagem;
-            label.onclick = () => selecionarAlternativa(label);
+            label.onclick = function () { selecionarAlternativa(label); };
             container.appendChild(label);
-        });
+        }
         if (index === total - 1) {
             document.getElementById('btnAvancar').textContent = 'VER RESULTADO';
         } else {
             document.getElementById('btnAvancar').textContent = 'PRÓXIMA PERGUNTA';
         }
     }
-
     function selecionarAlternativa(labelClicado) {
-        document.querySelectorAll('.alternativa-label').forEach(l => l.classList.remove('selecionada'));
+        let labels = document.querySelectorAll('.alternativa-label');
+        for (let i = 0; i < labels.length; i++) {
+            labels[i].classList.remove('selecionada');
+        }
         labelClicado.classList.add('selecionada');
         alternativaSelecionada = labelClicado;
         document.getElementById('btnAvancar').disabled = false;
@@ -185,38 +187,50 @@ if (!idUsuario) {
     }
 
     function finalizarQuiz() {
-        const votos = {};
-        respostas.forEach(r => {
+        let votos = {}
+        for (let i = 0; i < respostas.length; i++) {
+            var r = respostas[i];
             votos[r.fk_personagem] = (votos[r.fk_personagem] || 0) + 1;
-        });
-        const fk_personagem_resultado = parseInt(
-            Object.keys(votos).reduce((a, b) => votos[a] > votos[b] ? a : b)
-        );
+        }
+        var chaves = Object.keys(votos);
+        var chaveVencedor = chaves[0];
+        for (let i = 1; i < chaves.length; i++) {
+            if (votos[chaves[i]] > votos[chaveVencedor]) {
+                chaveVencedor = chaves[i];
+            }
+        }
+        var fk_personagem_resultado = parseInt(chaveVencedor);
         const payload = {
             fk_usuario: parseInt(idUsuario),
             fk_personagem_resultado: fk_personagem_resultado,
-            respostas: respostas.map(r => ({
-                fk_pergunta: r.fk_pergunta,
-                fk_alternativa: r.fk_alternativa
-            }))
+            respostas: (() => {
+                const arr = [];
+                for (let i = 0; i < respostas.length; i++) {
+                    arr.push({
+                        fk_pergunta: respostas[i].fk_pergunta,
+                        fk_alternativa: respostas[i].fk_alternativa
+                    });
+                }
+                return arr;
+            })()
         };
-        fetch(`${BASE_URL}/quiz/responder`, {
+        fetch(`/quiz/responder`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         })
-        .then(res => res.json())
-        .then(() => {
-            return fetch(`${BASE_URL}/quiz/resultado/${idUsuario}`);
-        })
-        .then(res => res.json())
-        .then(resultado => {
-            exibirResultado(resultado);
-        })
-        .catch(err => {
-            console.log(err);
-            alert('Erro ao salvar resultado. Tente novamente.');
-        });
+            .then(function (res) { return res.json(); })
+            .then(function () {
+                return fetch(`/quiz/resultado/${idUsuario}`);
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (resultado) {
+                exibirResultado(resultado);
+            })
+            .catch(function (err) {
+                console.log(err);
+                alert('Erro ao salvar resultado. Tente novamente.');
+            });
     }
 
     function exibirResultado(resultado) {
